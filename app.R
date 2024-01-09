@@ -17,13 +17,15 @@ s_df <- read_csv('esm244_students_w24.csv') %>%
 ui <- fluidPage(
 
     # Application title
-    titlePanel("ESM244 Student Randomatic"),
+    titlePanel("ESM244 Student Rand-O-matic!"),
 
     sidebarLayout(
         sidebarPanel(
           # checkbox to randomize or sort
           actionButton(inputId = 'dice',
                        label = 'Randomize!', icon = icon('dice')),
+          checkboxInput(inputId = 'show_pic',
+                        label = 'Show pic?', value = FALSE),
           # radio buttons to select a student - updated according to checkbox
           radioButtons(inputId = 'student_button',
                        label = 'Students',
@@ -71,7 +73,7 @@ server <- function(input, output) {
   })
   
   output$display_pic <- renderImage({
-    ### clean up name
+    if(!input$show_pic) return(list(src = 'img/blank.jpg'))
     if(input$student_button == 'octocat!') {
       img_src <- 'img/blank.jpg'
     } else {
