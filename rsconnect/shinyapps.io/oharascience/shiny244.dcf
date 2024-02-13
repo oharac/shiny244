@@ -5,6 +5,6 @@ account: oharascience
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10886250
-bundleId: 8147411
+bundleId: 8248309
 url: https://oharascience.shinyapps.io/shiny244/
 version: 1
